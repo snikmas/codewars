@@ -11,6 +11,8 @@ int num_in_suit[NUM_SUITS];
 bool straight, flush, four, three;
 int pairs;
 
+bool royal_flush, ace_low, two, ace;
+
 void read_cards(void);
 void analyze_hand(void);
 void print_result(void);
@@ -116,14 +118,36 @@ void analyze_hand(void)
     three = false;
     pairs = 0;
 
+    royal_flush = false;
+    ace_low = false;
+    two = false;
+    ace = false;
+    
+    //for flush check
     for (suit = 0; suit < NUM_SUITS; suit++)
         if(num_in_suit[suit] == NUM_CARDS)
             flush = true;
 
+    
+    // royal
+    if (flush)
+    {
+        for (rank = 8; rank < NUM_RANKS && num_in_rank[rank] > 0; rank++)
+            num_consec++;
+        if (num_consec == NUM_CARDS)
+        {
+            royal_flush = true;
+            return;
+        }
+    }
+
+    //for straight check
     rank = 0;
+    num_consec = 0;
     while (num_in_rank[rank] == 0) rank++;
     for (; rank < NUM_RANKS && num_in_rank[rank] > 0; rank++)
         num_consec++;
+        
     if (num_consec == NUM_CARDS) 
     {
         straight = true;
@@ -135,6 +159,18 @@ void analyze_hand(void)
         if (num_in_rank[rank] == 4) four = true;
         if (num_in_rank[rank] == 3) three = true;
         if (num_in_rank[rank] == 2) pairs++;
+    }
+
+    if (three && four)
+    {
+        for (rank = 0; rank < NUM_RANKS; rank++)
+        {
+            if (num_in_rank[rank] == 2) two = true;
+            if (num_in_rank[rank] == 12) ace = true;
+        }
+
+        if (two && ace)
+            ace_low = true;
     }
 }
 
@@ -150,7 +186,9 @@ void print_result(void)
     else if (three)         printf("Three of a kind");
     else if (pairs == 2)    printf("Two pairs");
     else if (pairs == 1)    printf("High card");
-    else                
+
+    else if (royal_flush)   printf("Royal flush"); 
+    else if (ace_low)       printf("Ace-low");             
 
     printf("\n\n");
 }
