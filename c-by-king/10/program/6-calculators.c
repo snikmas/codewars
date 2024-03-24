@@ -12,12 +12,13 @@ void make_empty(void)
     top = 0;
 }
 
-bool is_empty(void)
+// this an is_full are should be bool but bool doesn't work, guess cuz of version of c
+int is_empty(void)
 {
     return top == 0;
 }
 
-bool is_full(void)
+int is_full(void)
 {
     return top == STACK_SIZE;
 }
@@ -40,5 +41,6 @@ int pop(void)
 
 int main(void)
 {
-
+    printf("Enter an RPN expression: ");
+    
 }

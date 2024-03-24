@@ -1,0 +1,4 @@
+//allocation malloc:
+
+1. int k = malloc(100) ... //check for null
+2. if ((k = malloc(100) == NULL)) // good;
