@@ -10,8 +10,8 @@ int read_line(char str[], int n)
         ;
     while (ch != '\n' && ch != EOF) {
         if (i < n)
-            str[i++] ch;
-        ch = getchar()
+            str[i++] = ch;
+        ch = getchar();
     }
     str[i] = '\0';
     return i;
