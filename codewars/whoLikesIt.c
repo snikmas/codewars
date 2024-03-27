@@ -1,33 +1,33 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-char *likes(size_t n, const char *const names[n])
-{
-    for (int i = 0; i < n - 2)
-    {
-        printf("%s, ", names[i]);
-    }
-    if n = 0
-        printf("no one");
-    else
+//idk
 
-    if (n > 2)
-        printf("%s and ", number[n - 2]);
-    printf("%s like this", number[n - 1]);
+// result string must be a heap-allocated, nul-terminated string
+// to be freed by the tests suite
 
+char *likes(size_t n, const char *const names[n]) {
 
+    char output[n];
+    char *string;
+    int count = 0;
 
-    calloc (1,1);
-}
+    // i don't want always allocate
 
-
-int main(void)
-{
-    char names[n];
-    int n = 0;
-
-    printf("The number of people: ");
-    scanf("%i", n);
+    if (n == 0)
+        count = 18; // no one allocate
+    else if (n == 1)
+        count += strlen(name[0]) + 12; //we can do useing for loop
+    else if (n == 2)
+        count += strlen(name[i] )
 
 
+
+
+
+
+
+    //  <----  hajime!
+	return calloc(1, 1);
 }
