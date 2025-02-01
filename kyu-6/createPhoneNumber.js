@@ -29,7 +29,7 @@ createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
 
 // other solutions: interesting!
 
-// person A
+// person A, like it
 
 function createPhoneNumber(numbers){
   var format = "(xxx) xxx-xxxx";
@@ -40,4 +40,9 @@ function createPhoneNumber(numbers){
   }
   
   return format;
+}
+
+// person B, like it because he uses reduce
+function createPhoneNumber(numbers){
+  return numbers.reduce((p,c) => p.replace('x',c), "(xxx) xxx-xxxx");
 }
